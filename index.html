@@ -1,34 +1,80 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine 💖</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine 💗</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <!-- floating hearts -->
+  <div class="hearts" aria-hidden="true"></div>
 
-<div class="screen" id="ask">
-<h1>Will you be my Valentine? 💘</h1>
-<button id="yes">Yes 💖</button>
-<button id="no">No 😜</button>
-</div>
+  <!-- audio (iOS needs user tap) -->
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="assets/music.m4a" type="audio/mp4">
+  </audio>
 
-<div class="screen hidden" id="gallery">
-<h2>Our Memories 📸</h2>
-<img id="photo" src="assets/img1.jpg">
-<br>
-<button onclick="nextPhoto()">Next ➜</button>
-</div>
+  <main class="wrap">
+    <!-- Screen 1 -->
+    <section id="screen1" class="card active">
+      <div class="bigHeart" aria-hidden="true">💗</div>
 
-<div class="screen hidden" id="final">
-<h1>Happy Valentine's Day ❤️</h1>
-<p>You are my favorite person forever ✨</p>
-</div>
+      <h1 class="title">Happy Valentine’s Day ❤️</h1>
+      <p class="subtitle">
+        Aaj ka din sirf tumhare liye. Thora sa cute sa surprise 😄✨
+      </p>
 
-<audio id="music" src="assets/music.m4a"></audio>
+      <div class="questionBox">
+        <h2 class="question">Will you be my Valentine?</h2>
+        <p class="hint">Hint: “Yes” pe click karo warna main tang karunga 😌</p>
 
-<script src="app.js"></script>
+        <div class="btnRow">
+          <button id="yesBtn" class="btn yes">Yes 💞</button>
+          <button id="noBtn" class="btn no">No 🙈</button>
+        </div>
+
+        <p id="noText" class="noText" aria-live="polite"></p>
+
+        <div class="musicRow">
+          <button id="playMusic" class="btn ghost">▶ Play song</button>
+          <button id="stopMusic" class="btn ghost">⏸ Stop</button>
+          <span id="musicStatus" class="musicStatus">Song: off</span>
+        </div>
+      </div>
+
+      <button id="toMemories" class="btn next" disabled>Next ➜</button>
+    </section>
+
+    <!-- Screen 2 -->
+    <section id="screen2" class="card">
+      <h2 class="memTitle">Our Memories 📸</h2>
+      <p class="memSub">Har photo me ek choti si story hai… aur tum meri favorite ho 💖</p>
+
+      <div class="slider">
+        <button id="prev" class="navBtn" aria-label="Previous">‹</button>
+
+        <div class="frame">
+          <img id="slideImg" src="assets/img1.jpg" alt="Memory photo" />
+        </div>
+
+        <button id="next" class="navBtn" aria-label="Next">›</button>
+      </div>
+
+      <div class="dots" id="dots"></div>
+
+      <div class="finalBox">
+        <h3 class="finalTitle">One last thing…</h3>
+        <p class="finalText" id="finalText">
+          Tumhari smile meri weakness hai. Aaj bhi, kal bhi, hamesha 💗
+        </p>
+        <button id="endBtn" class="btn yes">Happy Valentine’s Day 💝</button>
+      </div>
+
+      <button id="backHome" class="btn ghost">⬅ Back</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
 </body>
-</html
+</html>
