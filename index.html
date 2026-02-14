@@ -1,80 +1,241 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valentine 💗</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor ❤️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- floating hearts -->
-  <div class="hearts" aria-hidden="true"></div>
 
-  <!-- audio (iOS needs user tap) -->
+<body>
+  <!-- Floating hearts layer -->
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <!-- Music -->
   <audio id="bgMusic" preload="auto" loop>
-    <source src="assets/music.m4a" type="audio/mp4">
+    <source src="assets/music.m4a" type="audio/mp4" />
   </audio>
 
   <main class="wrap">
-    <!-- Screen 1 -->
-    <section id="screen1" class="card active">
-      <div class="bigHeart" aria-hidden="true">💗</div>
-
-      <h1 class="title">Happy Valentine’s Day ❤️</h1>
+    <!-- SCREEN 1 -->
+    <section id="s1" class="card active">
+      <div class="bigHeart" aria-hidden="true">❤️</div>
+      <h1 class="title">Happy Valentine's Day, Noor 💗</h1>
       <p class="subtitle">
-        Aaj ka din sirf tumhare liye. Thora sa cute sa surprise 😄✨
+        Noor meri jaan… ye website maine khud banayi sirf tumhare liye 😌✨
       </p>
 
       <div class="questionBox">
         <h2 class="question">Will you be my Valentine?</h2>
-        <p class="hint">Hint: “Yes” pe click karo warna main tang karunga 😌</p>
+        <p class="hint">Hint: “No” dabaya to woh bhag jayega 😏</p>
 
         <div class="btnRow">
-          <button id="yesBtn" class="btn yes">Yes 💞</button>
-          <button id="noBtn" class="btn no">No 🙈</button>
+          <button class="btn yes" id="yesBtn" type="button">Yes 💞</button>
+          <button class="btn no" id="noBtn" type="button">No 🙈</button>
         </div>
 
         <p id="noText" class="noText" aria-live="polite"></p>
 
         <div class="musicRow">
-          <button id="playMusic" class="btn ghost">▶ Play song</button>
-          <button id="stopMusic" class="btn ghost">⏸ Stop</button>
-          <span id="musicStatus" class="musicStatus">Song: off</span>
+          <button class="btn ghost" id="playMusic" type="button">Play Song 🎵</button>
+          <button class="btn ghost" id="pauseMusic" type="button">Pause ⏸</button>
         </div>
       </div>
 
-      <button id="toMemories" class="btn next" disabled>Next ➜</button>
+      <button class="btn next" id="go2" type="button">Next ➜</button>
     </section>
 
-    <!-- Screen 2 -->
-    <section id="screen2" class="card">
-      <h2 class="memTitle">Our Memories 📸</h2>
-      <p class="memSub">Har photo me ek choti si story hai… aur tum meri favorite ho 💖</p>
+    <!-- SCREEN 2 (ROSE + MESSAGE) -->
+    <section id="s2" class="card">
+      <h1 class="title">A Rose for you, Noor 🌹</h1>
 
-      <div class="slider">
-        <button id="prev" class="navBtn" aria-label="Previous">‹</button>
+      <div class="roseWrap" aria-hidden="true">
+        <div class="rose">🌹</div>
+        <div class="sparkle">✨</div>
+      </div>
 
-        <div class="frame">
-          <img id="slideImg" src="assets/img1.jpg" alt="Memory photo" />
+      <p class="para">
+        Noor meri jaan 💗<br><br>
+        Tum meri peace ho, meri khushi ho, aur mera home bhi.  
+        Mera bacha, meri cutie, meri shona… aur haan mera chotu don 😄  
+        Main tumhe pyar se tease karta hoon: meri <b>moti</b> 😌 (sirf pyaar se!)  
+        meri golu si, mera golu bacha… tumhari smile se mera din ban jata hai ✨<br><br>
+        Aaj nahi… har din main tumhe choose karta hoon 💞
+      </p>
+
+      <div class="navRow">
+        <button class="btn ghost" data-go="s1" type="button">⬅ Back</button>
+        <button class="btn next" data-go="s3" type="button">Next ➜</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3 (MEMORIES SLIDER) -->
+    <section id="s3" class="card">
+      <h1 class="title">Our Memories 📸</h1>
+      <p class="subtitle">Har photo me ek choti si story hai… aur tum meri favorite ho 💖</p>
+
+      <div class="memoryFrame">
+        <button class="arrow left" id="prevImg" type="button" aria-label="Previous photo">‹</button>
+
+        <div class="photoBox">
+          <img id="memImg" src="assets/img1.jpg" alt="Memory photo" />
         </div>
 
-        <button id="next" class="navBtn" aria-label="Next">›</button>
+        <button class="arrow right" id="nextImg" type="button" aria-label="Next photo">›</button>
       </div>
 
-      <div class="dots" id="dots"></div>
-
-      <div class="finalBox">
-        <h3 class="finalTitle">One last thing…</h3>
-        <p class="finalText" id="finalText">
-          Tumhari smile meri weakness hai. Aaj bhi, kal bhi, hamesha 💗
-        </p>
-        <button id="endBtn" class="btn yes">Happy Valentine’s Day 💝</button>
+      <div class="dots" aria-hidden="true">
+        <span class="dot active" id="d1"></span>
+        <span class="dot" id="d2"></span>
+        <span class="dot" id="d3"></span>
+        <span class="dot" id="d4"></span>
+        <span class="dot" id="d5"></span>
+        <span class="dot" id="d6"></span>
       </div>
 
-      <button id="backHome" class="btn ghost">⬅ Back</button>
+      <div class="navRow">
+        <button class="btn ghost" data-go="s2" type="button">⬅ Back</button>
+        <button class="btn next" data-go="s4" type="button">Next ➜</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 4 (FINAL) -->
+    <section id="s4" class="card">
+      <div class="bigHeart" aria-hidden="true">💘</div>
+      <h1 class="title">One last thing…</h1>
+      <p class="para">
+        Noor, tum meri special ho. Always.  
+        Tum meri jaan, mera bacha, meri cutie… aur mera chotu don 😄  
+        I love you lots 💗
+      </p>
+
+      <div class="finalBtns">
+        <button class="btn yes" id="confettiBtn" type="button">Happy Valentine’s Day 🎉</button>
+        <button class="btn ghost" data-go="s1" type="button">↩ Start Again</button>
+      </div>
+
+      <canvas id="confettiCanvas" class="confetti"></canvas>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script>
+    // ---------- screen navigation ----------
+    const cards = document.querySelectorAll(".card");
+    function show(id) {
+      cards.forEach(c => c.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    document.getElementById("go2").addEventListener("click", () => show("s2"));
+    document.querySelectorAll("[data-go]").forEach(btn => {
+      btn.addEventListener("click", () => show(btn.getAttribute("data-go")));
+    });
+
+    // ---------- No button runs away ----------
+    const noBtn = document.getElementById("noBtn");
+    const noText = document.getElementById("noText");
+    const s1 = document.getElementById("s1");
+
+    function moveNo() {
+      const rect = s1.getBoundingClientRect();
+      const maxX = Math.max(10, rect.width - 140);
+      const maxY = Math.max(10, rect.height - 240);
+
+      noBtn.style.position = "absolute";
+      noBtn.style.left = (Math.random() * maxX) + "px";
+      noBtn.style.top  = (120 + Math.random() * maxY) + "px";
+
+      const lines = [
+        "Noor… No pe click? 😏",
+        "Aray meri moti, yahan nahi! 😄",
+        "Chotu don ke samne No? impossible 😌",
+        "Yes pe click karo warna main tang karunga 😜"
+      ];
+      noText.textContent = lines[Math.floor(Math.random() * lines.length)];
+    }
+
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("click", moveNo);
+
+    // ---------- Yes button ----------
+    document.getElementById("yesBtn").addEventListener("click", () => show("s2"));
+
+    // ---------- Music controls (iOS needs user tap) ----------
+    const music = document.getElementById("bgMusic");
+    document.getElementById("playMusic").addEventListener("click", () => music.play());
+    document.getElementById("pauseMusic").addEventListener("click", () => music.pause());
+
+    // ---------- Memories slider ----------
+    let i = 1;
+    const img = document.getElementById("memImg");
+    function updateDots() {
+      for (let k = 1; k <= 6; k++) {
+        document.getElementById("d" + k).classList.toggle("active", k === i);
+      }
+    }
+    function setImg(n) {
+      i = n;
+      img.src = "assets/img" + i + ".jpg";
+      updateDots();
+    }
+    document.getElementById("nextImg").addEventListener("click", () => setImg(i === 6 ? 1 : i + 1));
+    document.getElementById("prevImg").addEventListener("click", () => setImg(i === 1 ? 6 : i - 1));
+
+    // ---------- Floating hearts ----------
+    const hearts = document.getElementById("hearts");
+    setInterval(() => {
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.style.left = Math.random() * 100 + "%";
+      h.style.fontSize = (18 + Math.random() * 28) + "px";
+      h.style.animationDuration = (6 + Math.random() * 5) + "s";
+      h.textContent = ["💗","💖","💞","💕"][Math.floor(Math.random()*4)];
+      hearts.appendChild(h);
+      setTimeout(() => h.remove(), 9000);
+    }, 450);
+
+    // ---------- Confetti (simple) ----------
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    let confetti = [];
+    function boom() {
+      confetti = [];
+      for (let j=0; j<160; j++) {
+        confetti.push({
+          x: Math.random()*canvas.width,
+          y: -20,
+          r: 2 + Math.random()*4,
+          vy: 2 + Math.random()*4,
+          vx: -1 + Math.random()*2,
+          a: 1
+        });
+      }
+      animate();
+    }
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confetti.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.a -= 0.005;
+        ctx.globalAlpha = Math.max(0, p.a);
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = ["#ff4f81","#ff79a8","#ffd1e1","#ffffff"][Math.floor(Math.random()*4)];
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      confetti = confetti.filter(p => p.a > 0 && p.y < canvas.height + 30);
+      if (confetti.length) requestAnimationFrame(animate);
+    }
+    document.getElementById("confettiBtn").addEventListener("click", boom);
+  </script>
 </body>
 </html>
